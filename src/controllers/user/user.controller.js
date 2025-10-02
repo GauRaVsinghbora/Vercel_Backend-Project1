@@ -91,7 +91,6 @@ export const verifyOtp = asyncHandler(async (req, res) => {
     const options = {
         httpOnly: true,
         secure: true,
-        sameSite: "none"
     };
 
     res.status(200).cookie('refreshToken', refreshToken, options).cookie('accessToken', accessToken, options)
@@ -153,7 +152,6 @@ export const loginUser = asyncHandler(async (req, res) => {
     const options = {
         httpOnly: true,
         secure: true,
-        sameSite: "none"
     };
     
     return res.status(200).cookie('refreshToken', refreshToken, options).cookie('accessToken', accessToken, options)
@@ -174,8 +172,7 @@ export const logoutUser = asyncHandler(async (req, res) => {
 
     const options = {
         httpOnly: true,
-        secure: true,
-        sameSite: "none"
+        secure: true
     };
 
     return res
@@ -228,7 +225,6 @@ export const regenerateAccessToken = asyncHandler(async (req, res) => {
     const options = {
         httpOnly: true,
         secure: true,
-        sameSite: "none"
     };
     
     return res.status(200).cookie('refreshToken', refreshToken, options).cookie('accessToken', accessToken, options)
