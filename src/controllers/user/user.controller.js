@@ -40,8 +40,10 @@ export const registerUser = asyncHandler(async (req, res) => {
     // generate OTP
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     // console.log(`Generated OTP for ${phoneNumber}: ${otp}`);
+
     // send OTP to user's email
     await sendVerificationEmail(email, otp);
+    
     // else create user
     const user = await User.create({ 
         username, 
@@ -50,8 +52,6 @@ export const registerUser = asyncHandler(async (req, res) => {
         otp,
         otpexpiry: Date.now() + 10 * 60 * 1000
     });
-
-
 
     const createdUser = await User.findById(user._id).select('-password -otp -otpexpiry -refreshToken');
     if(!createdUser){
