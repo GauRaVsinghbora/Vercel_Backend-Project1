@@ -17,6 +17,8 @@ app.use(cookieParser());
 // importing and using routes
 import userRoutes from './routes/user/user.routes.js';
 app.use('/api/v1/users', userRoutes);
+import postRoutes from './routes/post/post.routes.js';
+app.use('/api/v1/posts', postRoutes);
 
 app.use((err, req, res, next) => {
     if (err instanceof ApiError) {
