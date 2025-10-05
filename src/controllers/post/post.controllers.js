@@ -20,7 +20,7 @@ export const createPost = asyncHandler(async (req, res) => {
 
     // take file path from multer middleware
     let file_url = null;
-    const fileLocalPath = req.files?.content[0].path;
+    const fileLocalPath = req.files?.content?.[0].path;
     if(fileLocalPath){
         file_url = await uploadToCloudinary(fileLocalPath);
         if(!file_url){
